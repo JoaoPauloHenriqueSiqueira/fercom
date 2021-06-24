@@ -105,7 +105,7 @@ class HomeController extends Controller
                 return redirect()->route('home')->with("message", "Nenhum produto encontrado");
             }
 
-            $product = Products::where('company_id', $companyId)->where("id", $productId)->first();
+            $product = Products::where('company_id', $companyId)->where("product_code", $productId)->first();
 
             return view(
                 'pages.detail',
@@ -161,7 +161,7 @@ class HomeController extends Controller
         $breadcrumbs = ["id" => false, "name" => 'Início', "subname" => "Todos os produtos"];
 
         if ($productId) {
-            $product = Products::where("company_id", $companyId)->where("id", $productId)->first();
+            $product = Products::where("company_id", $companyId)->where("product_code", $productId)->first();
             $category = Categories::where("company_id", $companyId)->where("id", $product->category_id)->first();
             $group = Groups::where("company_id", $companyId)->where("id", $category->group_id)->first();
             $subcategory = Subcategories::where("company_id", $companyId)->where("id", $product->subcategory_id)->first();

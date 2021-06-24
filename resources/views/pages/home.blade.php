@@ -22,14 +22,14 @@
             <div class="col-lg-4 col-md-6 col-sm-6 wow fadeIn" data-wow-delay="500ms">
                 <div class="shopping-box bottom30">
                     <div class="image">
-                        <img src="images/img/produtos/{{$data->id}}.jpg" alt="shop">
+                        <img src="images/img/produtos/{{$data->product_code}}.jpg" alt="shop">
                         <div class="overlay overlay-blue center-block">
                             <a class="opens" href="shop-cart.html" title="Add To Cart"><i class="fa fa-shopping-cart"></i></a>
                         </div>
                     </div>
                     <div class="shop-content text-center">
                         <h4 class="darkcolor pb-2">
-                            <a href="detail?product={{$data->id}}">{{$data->getFullNameValueAttribute()}}</a>
+                            <a href="detail?product={{$data->product_code}}">{{$data->getFullNameValueAttribute()}}</a>
                         </h4>
                         <p>{{$data->getShortDescription()}}</p>
                         <h4 class="price-product font-weight-bold">{{$data->getSaleFormatValueAttribute()}}</h4>

@@ -36,6 +36,14 @@ class SubcategoriesTableSeeder extends Seeder
                 "name" => "Protetor Solar",
                 "created_at" => Carbon::now(),
                 "updated_at" => Carbon::now(),
+            ],
+            [
+                "id" => 4,
+                "company_id" => 1,
+                "category_id" => 1,
+                "name" => "Capacete de segurança",
+                "created_at" => Carbon::now(),
+                "updated_at" => Carbon::now(),
             ]
         ];
 

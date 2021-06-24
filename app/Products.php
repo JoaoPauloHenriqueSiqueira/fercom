@@ -12,7 +12,8 @@ class Products extends Model
     protected $collection = 'products';
     protected $fillable = [
         'description',
-        'name', 'sale_value', 'quantity'
+        'name', 'sale_value', 'quantity',
+        'product_code'
     ];
 
     public function company()

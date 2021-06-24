@@ -16,7 +16,22 @@ class CategoriesTableSeeder extends Seeder
             [
                 "id" => 1,
                 "company_id" => 1,
-                "name" => "CREMES DE PROTECAO",
+                "name" => "Cremes de proteção",
+                "group_id" => 1,
+                "created_at" => Carbon::now(),
+                "updated_at" => Carbon::now(),
+            ],
+            [
+                "id" => 2,
+                "company_id" => 1,
+                "name" => "Proteção para a cabeça",
+                "group_id" => 1,
+                "created_at" => Carbon::now(),
+                "updated_at" => Carbon::now(),
+            ], [
+                "id" => 3,
+                "company_id" => 1,
+                "name" => "Proteção facial",
                 "group_id" => 1,
                 "created_at" => Carbon::now(),
                 "updated_at" => Carbon::now(),

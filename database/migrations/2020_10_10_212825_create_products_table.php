@@ -22,6 +22,7 @@ class CreateProductsTable extends Migration
             $table->integer('quantity')->nullable(true);
             $table->integer('category_id')->unsigned();
             $table->integer('subcategory_id')->unsigned();
+            $table->integer('product_code')->unsigned();
             $table->timestamps();
         });
 
