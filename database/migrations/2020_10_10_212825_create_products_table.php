@@ -23,6 +23,10 @@ class CreateProductsTable extends Migration
             $table->integer('category_id')->unsigned();
             $table->integer('subcategory_id')->unsigned();
             $table->integer('product_code')->unsigned();
+            $table->integer('weight')->nullable(true);
+            $table->integer('height')->nullable(true);
+            $table->integer('width')->nullable(true);
+            $table->integer('length')->nullable(true);
             $table->timestamps();
         });
 
