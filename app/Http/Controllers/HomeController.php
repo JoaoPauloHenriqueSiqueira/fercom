@@ -122,6 +122,30 @@ class HomeController extends Controller
         }
     }
 
+    public function cart(Request $request)
+    {
+        try {
+            $companyId = ENV('COMPANY');
+            $company = Company::find($companyId);
+
+            $breadcrumbs = $this->breadcrumb($request);
+            $description = $this->description($request);
+            $groups = $this->groups();
+    
+            return view(
+                'pages.shopping-cart',
+                [
+                    "groups" => $groups,
+                    "breadcrumbs" => $breadcrumbs,
+                    "description" => $description,
+                    "company" => $company,
+                ]
+            );
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
     private function groups()
     {
         $companyId = ENV('COMPANY');

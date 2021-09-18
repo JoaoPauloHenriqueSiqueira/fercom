@@ -279,12 +279,16 @@ jQuery($=> {
         $window.scroll(function () {
             let $scroll = $window.scrollTop();
             let $navbar = $(".static-nav");
+            let $secondnavbar = $(".secondNavbar");
+
             let nextSection = $(".section-nav-smooth");
             if ($scroll > 120) {
                 $navbar.addClass("fixedmenu mt-0");
+                $secondnavbar.addClass("fixedmenu  fixedmenu2 mt-0");
                 nextSection.css("margin-top", headerHeight);
             } else {
                 $navbar.removeClass("fixedmenu mt-0");
+                $secondnavbar.removeClass("fixedmenu fixedmenu2 mt-0");
                 nextSection.css("margin-top", 0);
             }
         });

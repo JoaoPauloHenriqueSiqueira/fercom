@@ -15,3 +15,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/detail', 'HomeController@detail')->name('detail');
+Route::get('/cart', 'HomeController@cart')->name('cart');

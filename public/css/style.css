@@ -1642,23 +1642,6 @@ a.dropdown-toggle::after {
     color: #ffffff;
 }
 
-.dropdown-item:before{
-    position: absolute;
-    content: "\f105";
-    font-family: "Font Awesome 5 Free", serif;
-    font-weight: 600;
-    top: 50%;
-    transform: translateY(-50%);
-    left: -20px;
-    color: inherit;
-    transition: 0.2s;
-}
-.dropdown-item:hover:before{
-    left: 10px;
-}
-.dropdown-item:hover {
-    padding: 0 0 0 1.8rem;
-}
 .navbar .dropdown .dropdown-toggle::after{
     transition: 0.3s ease-in all !important;
 }

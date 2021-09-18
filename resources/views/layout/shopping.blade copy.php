@@ -44,11 +44,6 @@
             background: #222831 !important;
         }
 
-        .fixedmenu2 {
-            top: 75px !important;
-            background: #F05454 !important;
-        }
-
         .fixedmenu .navbar-nav .nav-link {
             color: #fff;
         }
@@ -64,8 +59,8 @@
         }
 
         .navbar-brand>img {
-            max-width: 140%;
-            width: 140%;
+            max-width: 180%;
+            width: 180%;
 
         }
 
@@ -77,10 +72,6 @@
         .padding_bottom {
             width: 100%;
             min-height: 360px;
-        }
-
-        .navbar-nav .nav-item {
-            margin: 10px;
         }
 
 
@@ -191,18 +182,62 @@ However, delay the fade out process for 2.5 seconds */
     <header class="site-header">
         <nav class="navbar navbar-expand-lg static-nav bg-yellow">
             <div class="container">
-                <a class="navbar-brand" href="<?= URL::route('home') ?>">
+                <a class="navbar-brand" href="../index-construction.html">
                     <img src="images/img/header.png" alt="logo">
                 </a>
                 <div class="collapse navbar-collapse">
                     <ul class="navbar-nav mx-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= URL::route('cart') ?>"><i style="font-size: 14px" class="fas fa-shopping-cart"></i> Ir para o carrinho</a>
+                            <a class="nav-link" href="about.html">Início</a>
+                        </li>
+                        <li class="nav-item dropdown static">
+                            <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Categorias </a>
+                            <ul class="dropdown-menu megamenu">
+                                <li>
+                                    <div class="container">
+                                        <div class="row">
+                                            @foreach ($groups as $data)
+                                            <div class="col-lg-12 col-md-6 col-sm-12">
+                                                <a class="dropdown-item" href="?group={{$data['id']}}">
+                                                    <h5 class="dropdown-title bottom10"><img style="max-width:50px!important;color: white;" src="images/img/iconesMenu/{{$data['icon']}}.png" /> {{ $data['name'] }}</h5>
+                                                </a>
+                                                @foreach ($data['categories'] as $d)
+                                                @if(!empty($d['subcategories']))
+                                                <a class="dropdown-item collapsePagesSideMenu" data-toggle="collapse" href="#innerall-{{$d['id']}}">
+                                                    {{ $d['name'] }} <i class="fas fa-chevron-down"></i>
+                                                </a>
+                                                <div id="innerall-{{$d['id']}}" class="collapse">
+                                                    <ul class="mt-2">
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="?group={{$data['id']}}&category={{$d['id']}}">Todos produtos</a>
+                                                        </li>
+                                                        @foreach ($d['subcategories'] as $s)
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="?group={{$data['id']}}&category={{$d['id']}}&subcategory={{$s['id']}}">{{ $s['name'] }}</a>
+                                                        </li>
+                                                        @endforeach
+                                                    </ul>
+                                                </div>
+                                                @else
+                                                <a class="nav-link" href="?group={{$data['id']}}&category={{$d['id']}}">{{$d['name']}}</a>
+                                                @endif
+                                                @endforeach
+                                            </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
+                <ul class="social-icons darkcolor social-icons-simple d-lg-inline-block d-none animated fadeInUp" data-wow-delay="300ms">
+                    <li><a target="_blank" href="{{$company->whatsapp}}" class="whatsapp"><i class="fab fa-whatsapp"></i></a> </li>
+                    <li><a target="_blank" href="{{$company->facebook}}" class="facebook"><i class="fab fa-facebook-f"></i> </a> </li>
+                    <li><a target="_blank" href="{{$company->instragram}}" class="insta"><i class="fab fa-instagram"></i> </a> </li>
+                </ul>
             </div>
-
+            <!--side menu open button-->
             <a href="javascript:void(0)" class="d-inline-block sidemenu_btn" id="sidemenu_toggle">
                 <span class="bg-dark" style="color:#fff !important;"></span> <span class="bg-dark" style="color: #fff !important;"></span> <span class="bg-dark" style="color:#fff !important;"></span>
             </a>
@@ -216,10 +251,7 @@ However, delay the fade out process for 2.5 seconds */
                 <nav class="side-nav w-100">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('home') }}">Início</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('cart') }}">Ir para o carrinho</a>
+                            <a class="nav-link" href="about.html">Início</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link collapsePagesSideMenu" data-toggle="collapse" href="#sideNavPages">
@@ -274,7 +306,6 @@ However, delay the fade out process for 2.5 seconds */
                                 </ul>
                             </div>
                         </li>
-
                     </ul>
                 </nav>
                 <div class="side-footer w-100">
@@ -289,51 +320,6 @@ However, delay the fade out process for 2.5 seconds */
         </div>
         <div id="close_side_menu" class="tooltip"></div>
         <!-- End side menu -->
-    </header>
-
-    <header class="site-header">
-        <nav class="navbar navbar-expand-lg bg-blue secondNavbar">
-            <div class="container">
-                <div class="collapse navbar-collapse">
-                    <ul class="navbar-nav mx-auto">
-                        @foreach ($groups as $data)
-                        <li class="nav-item">
-                            <div class="dropdown">
-                                <a class="dropdown-toggle whitecolor" href="#" role="button" id="{{$data['id']}}" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img style="max-width:50px!important;color: white;" src="images/img/iconesMenu/{{$data['icon']}}.png" /> {{$data['name']}}
-                                </a>
-
-                                <ul class="dropdown-menu" aria-labelledby="{{$data['id']}}">
-                                    <li><a class="dropdown-item" href="{{ route('home') }}??group={{$data['id']}}">Todos os produtos</a></li>
-                                    @foreach ($data['categories'] as $d)
-                                    @if(!empty($d['subcategories']))
-                                    <a class="dropdown-item collapsePagesSideMenu" data-toggle="collapse" href="#innerall-{{$d['id']}}">
-                                        {{ $d['name'] }} <i class="fas fa-chevron-down"></i>
-                                    </a>
-                                    <div id="innerall-{{$d['id']}}" class="collapse">
-                                        <ul class="mt-2">
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="{{ route('home') }}??group={{$data['id']}}&category={{$d['id']}}">Todos produtos</a>
-                                            </li>
-                                            @foreach ($d['subcategories'] as $s)
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="{{ route('home') }}??group={{$data['id']}}&category={{$d['id']}}&subcategory={{$s['id']}}">{{ $s['name'] }}</a>
-                                            </li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                    @else
-                                    <a class="nav-link" href="{{ route('home') }}??group={{$data['id']}}&category={{$d['id']}}">{{$d['name']}}</a>
-                                    @endif
-                                    @endforeach
-                                </ul>
-                            </div>
-                        </li>
-                        @endforeach
-                    </ul>
-                </div>
-            </div>
-        </nav>
     </header>
     <!-- header -->
     <!--Page Header-->
@@ -467,10 +453,14 @@ However, delay the fade out process for 2.5 seconds */
 
     <!--custom functions and script-->
     <script src="{{ asset('js/functions.js') }}"></script>
-    <script src="{{ asset('js/functionEcommerce.js') }}"></script>
-
     <script>
+        function updateYear() {
+            let year = new Date().getFullYear();
+            $(".year").append(year)
+        }
+
         $(document).ready(function() {
+            updateYear();
             var divSnack = document.getElementById("liveToast");
 
             if (divSnack) {

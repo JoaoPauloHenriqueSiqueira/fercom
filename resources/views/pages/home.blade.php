@@ -1,6 +1,7 @@
 @extends('layout.shopping', ['company' => $company,'groups'=>$groups])
 
 @section('content')
+<div id="snackbar" class="snackbar"></div>
 
 <!--Page Header ends -->
 <!--Shopping-->
@@ -24,7 +25,7 @@
                     <div class="image">
                         <img src="images/img/produtos/{{$data->product_code}}.jpg" alt="shop">
                         <div class="overlay overlay-blue center-block">
-                            <a class="opens" href="shop-cart.html" title="Add To Cart"><i class="fa fa-shopping-cart"></i></a>
+                            <a class="opens" id="product-{{$data['id']}}" title="Adicionar ao Carrinho" data-product="{{$data}}" onclick="addCart({{$data['id']}})"><i class="fa fa-shopping-cart"></i></a>
                         </div>
                     </div>
                     <div class="shop-content text-center">

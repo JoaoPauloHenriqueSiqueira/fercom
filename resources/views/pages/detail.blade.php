@@ -4,6 +4,8 @@
 
 <!--Shop details-->
 <section id="shop" class="padding">
+<div id="snackbar" class="snackbar"></div>
+
     <div class="container">
         <div class="row">
             <!-- NOTE: The Id of both of below tags should be same as below-->
