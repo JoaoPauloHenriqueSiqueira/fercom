@@ -15,8 +15,8 @@
                 <div class="owl-carousel carousel-shop-detail owl-theme" id="syncCarousel">
                     <!--Item 1-->
                     <div class="item">
-                        <a href="images/img/produtos/{{$product->id}}.jpg" data-fancybox="gallery" title="Zoom In">
-                            <img src="images/img/produtos/{{$product->id}}.jpg" alt="Latest News">
+                        <a href="images/img/produtos/{{$product->product_code}}.jpg" data-fancybox="gallery" title="Zoom In">
+                            <img src="images/img/produtos/{{$product->product_code}}.jpg" alt="Latest News">
                         </a>
                     </div>
                 </div>
