@@ -45,7 +45,7 @@
         }
 
         .fixedmenu2 {
-            top: 75px !important;
+            top: 60px !important;
             background: #F05454 !important;
         }
 
@@ -196,9 +196,9 @@ However, delay the fade out process for 2.5 seconds */
                 </a>
                 <div class="collapse navbar-collapse">
                     <ul class="navbar-nav mx-auto">
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link" href="<?= URL::route('cart') ?>"><i style="font-size: 14px" class="fas fa-shopping-cart"></i> Ir para o carrinho</a>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </div>
@@ -218,9 +218,9 @@ However, delay the fade out process for 2.5 seconds */
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('home') }}">Início</a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link" href="{{ route('cart') }}">Ir para o carrinho</a>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
                             <a class="nav-link collapsePagesSideMenu" data-toggle="collapse" href="#sideNavPages">
                                 Categorias <i class="fas fa-chevron-down"></i>
@@ -304,7 +304,7 @@ However, delay the fade out process for 2.5 seconds */
                                 </a>
 
                                 <ul class="dropdown-menu" aria-labelledby="{{$data['id']}}">
-                                    <li><a class="dropdown-item" href="{{ route('home') }}??group={{$data['id']}}">Todos os produtos</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('home') }}?group={{$data['id']}}">Todos os produtos</a></li>
                                     @foreach ($data['categories'] as $d)
                                     @if(!empty($d['subcategories']))
                                     <a class="dropdown-item collapsePagesSideMenu" data-toggle="collapse" href="#innerall-{{$d['id']}}">
@@ -313,17 +313,17 @@ However, delay the fade out process for 2.5 seconds */
                                     <div id="innerall-{{$d['id']}}" class="collapse">
                                         <ul class="mt-2">
                                             <li class="nav-item">
-                                                <a class="nav-link" href="{{ route('home') }}??group={{$data['id']}}&category={{$d['id']}}">Todos produtos</a>
+                                                <a class="nav-link" href="{{ route('home') }}?group={{$data['id']}}&category={{$d['id']}}">Todos produtos</a>
                                             </li>
                                             @foreach ($d['subcategories'] as $s)
                                             <li class="nav-item">
-                                                <a class="nav-link" href="{{ route('home') }}??group={{$data['id']}}&category={{$d['id']}}&subcategory={{$s['id']}}">{{ $s['name'] }}</a>
+                                                <a class="nav-link" href="{{ route('home') }}?group={{$data['id']}}&category={{$d['id']}}&subcategory={{$s['id']}}">{{ $s['name'] }}</a>
                                             </li>
                                             @endforeach
                                         </ul>
                                     </div>
                                     @else
-                                    <a class="nav-link" href="{{ route('home') }}??group={{$data['id']}}&category={{$d['id']}}">{{$d['name']}}</a>
+                                    <a class="nav-link" href="{{ route('home') }}?group={{$data['id']}}&category={{$d['id']}}">{{$d['name']}}</a>
                                     @endif
                                     @endforeach
                                 </ul>
@@ -337,7 +337,7 @@ However, delay the fade out process for 2.5 seconds */
     </header>
     <!-- header -->
     <!--Page Header-->
-    <section id="main-banner-page" class="position-relative page-header shop-header section-nav-smooth parallax">
+    <!-- <section id="main-banner-page" class="position-relative page-header shop-header section-nav-smooth parallax">
         <div class="overlay overlay-dark opacity-6 z-index-1"></div>
         <div class="container">
             <div class="row">
@@ -360,7 +360,7 @@ However, delay the fade out process for 2.5 seconds */
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     @if ($errors->any())
     <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 5">

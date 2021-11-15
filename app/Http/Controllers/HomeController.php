@@ -36,9 +36,15 @@ class HomeController extends Controller
 
             $breadcrumbs = $this->breadcrumb($request);
             $description = $this->description($request);
+
             $groups = $this->groups();
             $products = $this->products($request);
 
+            $subCategories = $this->subcategories($request);
+
+            $groupId = $request->query('group');
+            $categoryId = $request->query('category');
+            
             return view(
                 'pages.home',
                 [
@@ -46,7 +52,10 @@ class HomeController extends Controller
                     "breadcrumbs" => $breadcrumbs,
                     "description" => $description,
                     "company" => $company,
-                    "products" => $products
+                    "products" => $products,
+                    "group" => $groupId,
+                    "category" => $categoryId,
+                    "subcategories" => $subCategories
                 ]
             );
         } catch (Exception $e) {
@@ -87,6 +96,35 @@ class HomeController extends Controller
         }
 
         return $products;
+    }
+
+    public function subcategories($request)
+    {
+        $groupId = $request->query('group');
+        $categoryId = $request->query('category');
+        $subCategoryId = $request->query('subcategory');;
+       
+        $companyId = ENV('COMPANY');
+
+        $products = [];
+
+        $links = [];
+
+        if ($groupId && !$categoryId) {
+            $categories = Categories::where("company_id", $companyId)->where("group_id", $groupId)->get();
+            foreach($categories as $category){
+                array_push($links, ["name"=> $category->name,"link" => "?group=$groupId&category=$category->id"]);
+            }
+        }
+
+        if ($groupId && $categoryId) {
+            $subcategories = Subcategories::where("company_id", $companyId)->where("category_id", $categoryId)->get();
+            foreach($subcategories as $subcategory){
+                array_push($links, ["name"=> $subcategory->name,"link" => "?group=$groupId&category=$categoryId&subcategory=$subcategory->id"]);
+            }    
+        }
+
+        return $links;
     }
 
     public function detail(Request $request)
